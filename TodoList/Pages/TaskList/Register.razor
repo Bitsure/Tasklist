@@ -1,0 +1,52 @@
+﻿@page "/Data/Register"
+
+@using TodoList.Models
+@using DatabaseAccessLibrary
+
+@inject UserHandler _db;
+@inject NavigationManager NavManager; 
+
+<h1>Register</h1>
+<h5>Create your new account</h5><br/>
+<EditForm Model="@newForm" OnValidSubmit="InsertUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <h6>Username</h6>
+    <InputText id="username-reg" @bind-Value="newForm.Username"></InputText><br/>
+    <h6>Password</h6>
+    <InputText id="password-reg" @bind-Value="newForm.Password"></InputText><br />
+    <h6>Email</h6>
+    <InputText id="email-reg" @bind-Value="newForm.EmailAddress"></InputText><br /><br />
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</EditForm>
+
+@if (exists is true)
+{
+    <p id="reg-error">User already exists, use different username!</p>
+}
+@code {
+    private RegistrationModel newForm = new RegistrationModel();
+
+    private bool exists;
+
+    private void InsertUser()
+    {
+        exists = _db.DoesUserExists(newForm.Username);
+        Console.WriteLine(exists);
+        if (exists == false)
+        {
+            UserData usr = new UserData
+            {
+                Username = newForm.Username,
+                Password = newForm.Password,
+                EmailAddress = newForm.EmailAddress
+            };
+            _db.InsertUser(usr);
+            newForm = new RegistrationModel();
+
+            NavManager.NavigateTo("/Data/Login");
+        }
+    }
+}

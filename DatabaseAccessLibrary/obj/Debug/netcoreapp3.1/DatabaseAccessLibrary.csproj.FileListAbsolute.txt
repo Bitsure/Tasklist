@@ -1,0 +1,10 @@
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\bin\Debug\netcoreapp3.1\DatabaseAccessLibrary.deps.json
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\bin\Debug\netcoreapp3.1\DatabaseAccessLibrary.dll
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\bin\Debug\netcoreapp3.1\DatabaseAccessLibrary.pdb
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.csproj.AssemblyReference.cache
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.AssemblyInfoInputs.cache
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.AssemblyInfo.cs
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.csproj.CoreCompileInputs.cache
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.dll
+E:\Projekty_Blazor\TodoList\DatabaseAccessLibrary\obj\Debug\netcoreapp3.1\DatabaseAccessLibrary.pdb

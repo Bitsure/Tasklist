@@ -1,0 +1,45 @@
+﻿@page "/Data/Login"
+
+@using DatabaseAccessLibrary
+@using TodoList.Models
+
+@inject NavigationManager NavManager
+@inject UserHandler _db;
+
+<h1>Login</h1>
+<EditForm Model="@loginForm" OnValidSubmit="LoginToAccount">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <h6>Username</h6>
+    <InputText id="username-log" @bind-Value="loginForm.Username"></InputText><br />
+    <h6>Password</h6>
+    <InputText type="password" id="password-log" @bind-Value="loginForm.Password"></InputText><br /><br />
+
+    <button type="submit" class="btn btn-primary">Log in</button><br />
+</EditForm>
+
+<button class="btn" @onclick="RedirectToRegister">Sign up</button>
+
+@code {
+    //ADD ERROR MESSAGE FOR INVALID DATA//
+
+    private LoginModel loginForm = new LoginModel();
+    private bool exists;
+
+    private void RedirectToRegister()
+    {
+        NavManager.NavigateTo("/Data/Register");
+    }
+
+    private void LoginToAccount()
+    {
+        exists = _db.MatchUsernameAndPassword(loginForm.Username, loginForm.Password);
+
+        if(exists)
+        {
+            string user = loginForm.Username;
+            NavManager.NavigateTo($"/Data/Todo/{user}");
+        }
+    }
+}

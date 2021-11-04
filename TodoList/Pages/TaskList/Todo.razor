@@ -1,0 +1,92 @@
+﻿@page "/Data/Todo/{user}"
+
+@using DatabaseAccessLibrary
+@using TodoList.Models
+
+@inject UserHandler usrHandler;
+@inject TaskHandler tskHandler;
+
+<h1>Hello, @userData.Username</h1>
+<h4>This is your todo list:</h4>
+
+@if(tasks is null)
+{
+    <p>Tasks are being loaded...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Finished</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var task in tasks)
+            {
+                <tr>
+                    <td>@task.Topic</td>
+                    <td>@task.Description</td>
+                    <td>@task.Date</td>
+                    <td><input type="checkbox" @bind-value="@task.Finished"/></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" @onclick="RemoveTask">Update tasks</button>
+}
+
+<h4>Create new task: </h4>
+<EditForm Model="@newTask" OnValidSubmit="AddTask">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <h6>Topic</h6>
+    <InputText id="topic-in" @bind-Value="newTask.Topic"></InputText><br />
+    <h6>Description</h6>
+    <InputText id="desc-in" @bind-Value="newTask.Description"></InputText><br />
+    <h6>Date</h6>
+    <InputDate id="date-in" @bind-Value="newTask.Date"></InputDate><br /><br />
+
+    <button type="submit" class="btn btn-primary">Add task</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public string user { get; set; }
+    private UserData userData;
+
+    private TaskModel newTask = new TaskModel();
+    private List<TaskData> tasks;
+
+    protected override void OnInitialized()
+    {
+        userData = usrHandler.GetUser(user);
+        tasks = tskHandler.GetUserTasks(userData.userId);
+        Console.WriteLine(tasks);
+    }
+
+    private void AddTask()
+    {
+        TaskData task = new TaskData();
+        task.UserId = userData.userId;
+        task.Topic = newTask.Topic;
+        task.Description = newTask.Description;
+        task.Date = newTask.Date;
+        task.Finished = false;
+
+        tskHandler.InsertTask(task);
+        tasks.Add(task);
+
+        Console.WriteLine("Task added");
+    }
+
+    private void RemoveTask()
+    {
+        tasks = tskHandler.RemoveFinishedTasks(tasks);
+    }
+}
