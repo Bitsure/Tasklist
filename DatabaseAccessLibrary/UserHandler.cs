@@ -16,7 +16,7 @@ namespace DatabaseAccessLibrary
 
         public UserData GetUser(string Username)
         {
-            return _db.GetData<UserData, dynamic>($"select * from Users where Username = @Username", new {Username }).First();
+            return _db.GetData<UserData, dynamic>($"select * from Users where Username = @Username", new {Username }).First(); //Tutaj występuje problem
         }
 
         public void InsertUser(UserData user)

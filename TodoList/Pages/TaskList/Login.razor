@@ -1,4 +1,4 @@
-﻿@page "/Data/Login"
+﻿@page "/"
 
 @using DatabaseAccessLibrary
 @using TodoList.Models
@@ -22,8 +22,6 @@
 <button class="btn" @onclick="RedirectToRegister">Sign up</button>
 
 @code {
-    //ADD ERROR MESSAGE FOR INVALID DATA//
-
     private LoginModel loginForm = new LoginModel();
     private bool exists;
 

@@ -111,7 +111,6 @@ using TodoList.Models;
     {
         userData = usrHandler.GetUser(user);
         tasks = tskHandler.GetUserTasks(userData.userId);
-        Console.WriteLine(tasks);
     }
 
     private void AddTask()
@@ -125,8 +124,6 @@ using TodoList.Models;
 
         tskHandler.InsertTask(task);
         tasks.Add(task);
-
-        Console.WriteLine("Task added");
     }
 
     private void RemoveTask()

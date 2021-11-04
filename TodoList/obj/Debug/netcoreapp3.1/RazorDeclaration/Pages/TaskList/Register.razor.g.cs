@@ -107,7 +107,6 @@ using DatabaseAccessLibrary;
     private void InsertUser()
     {
         exists = _db.DoesUserExists(newForm.Username);
-        Console.WriteLine(exists);
         if (exists == false)
         {
             UserData usr = new UserData

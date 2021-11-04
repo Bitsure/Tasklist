@@ -15,7 +15,7 @@
     <h6>Username</h6>
     <InputText id="username-reg" @bind-Value="newForm.Username"></InputText><br/>
     <h6>Password</h6>
-    <InputText id="password-reg" @bind-Value="newForm.Password"></InputText><br />
+    <InputText id="password-reg" @bind-Value="newForm.Password" type="password"></InputText><br />
     <h6>Email</h6>
     <InputText id="email-reg" @bind-Value="newForm.EmailAddress"></InputText><br /><br />
 
@@ -34,7 +34,6 @@
     private void InsertUser()
     {
         exists = _db.DoesUserExists(newForm.Username);
-        Console.WriteLine(exists);
         if (exists == false)
         {
             UserData usr = new UserData

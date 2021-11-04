@@ -89,7 +89,7 @@ using TodoList.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/Data/Login")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -100,8 +100,6 @@ using TodoList.Models;
 #nullable restore
 #line 24 "E:\Projekty_Blazor\TodoList\TodoList\Pages\TaskList\Login.razor"
        
-    //ADD ERROR MESSAGE FOR INVALID DATA//
-
     private LoginModel loginForm = new LoginModel();
     private bool exists;
 

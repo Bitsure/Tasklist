@@ -83,7 +83,7 @@ using TodoList.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "E:\Projekty_Blazor\TodoList\TodoList\Shared\NavMenu.razor"
+#line 18 "E:\Projekty_Blazor\TodoList\TodoList\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
